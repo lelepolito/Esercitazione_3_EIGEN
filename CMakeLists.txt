@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(Esercitazione3 LANGUAGES CXX C VERSION 1.0.0)
+project(SistemiLineari LANGUAGES CXX C VERSION 1.0.0)
 
 # Set C++ Standard
 ################################################################################
