@@ -13,7 +13,7 @@ Vector2d Palu(const Matrix2d& A,const Vector2d& b)
     Matrix2d L, P;
     PartialPivLU<Matrix2d> lu(A);
     L = Matrix2d::Identity();
-    L(1,0) = lu.matrixLU()(1,0);
+    L.triangularView<StrictlyLower>() = lu.matrixLU().triangularView<StrictlyLower>();
     P = lu.permutationP();
     y = L.triangularView<Lower>().solve(P * b);
     x = lu.matrixLU().triangularView<Upper>().solve(y);
