@@ -17,7 +17,7 @@ Vector2d Palu(const Matrix2d& A,const Vector2d& b)
     P = lu.permutationP();
     y = L.triangularView<Lower>().solve(P * b);
     x = lu.matrixLU().triangularView<Upper>().solve(y);
-    //x = lu.solve(b);
+    //x = lu.solve(b); questo è il metodo per utilizzare il solver senza passare dalle matrici LPU 
     return x;
 }
 
@@ -29,7 +29,7 @@ Vector2d QR(const Matrix2d& A,const Vector2d& b)
     Q = qr.householderQ();
     R = qr.matrixQR().triangularView<Upper>();
     x = R.triangularView<Upper>().solve(Q.transpose() * b);
-  // x = qr.solve(b);
+  // x = qr.solve(b); questo è il metodo per utilizzare il solver senza passare dalle matrici Q e R
     return x;
 }
 double ErroreRelativo(const Vector2d& x,const Vector2d& xesatto)
